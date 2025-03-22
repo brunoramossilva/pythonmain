@@ -111,14 +111,11 @@ def condicao (num):
 
     elif num == 2:
         exibir_subtitulo('Listagem de Animais')
+        print(f'{'  Nome do Animal'.ljust(20)} | {'Raça do animal'.ljust(18)} | {'Status de vacinação'}')
+        print(f'{'                     |'}                    |')
         for animal in animais:
-
-            if animal['vacinado']:
-                vacinado = ('Vacinado(a)')
-            else:
-                vacinado = ('Não vacinado(a)')
-
-            print(f'• Nome do animal: {animal['nome']} | Raça do animal: {animal['raca']} | Status de vacinação: {vacinado};')
+            vacinado = 'Vacinado(a)' if animal['vacinado'] else 'Não vacinado(a)'
+            print(f'  {animal['nome'].ljust(18)} | {animal['raca'].ljust(18)} | {vacinado};')
         print('')
         voltar_main()
 
