@@ -1,8 +1,13 @@
 from os import system
 
+
 # PetCIn
 
-animais = []
+
+animais = [{'nome':'Toby', 'raca':'Vira-lata', 'vacinado':False},
+           {'nome':'Mel', 'raca':'Gato(a)', 'vacinado':True},
+           {'nome':'Saddam', 'raca':'Vira-lata', 'vacinado':False}]
+
 
 def voltar_main():
     resposta = input('Digite qualquer coisa para voltar ao menu principal: ')
@@ -36,8 +41,9 @@ def escolha():
     try:
         num = int(input('1. Cadastrar novo animal;\n'
         '2. Ver lista de animais cadastrados;\n'
-        '3. Sair do programa;\n'
-        '\nDigite um número: '))
+        '3. Vacinar animal;\n'
+        '4. Sair do programa.'
+        '\n\nDigite um número: '))
         return num
     
     except ValueError:
@@ -69,14 +75,23 @@ def condicao (num):
         system ('cls')
         print('Lista de Animais:\n')
         for animal in animais:
-            print(f'{animal};')
+
+            if animal['vacinado']:
+                vacinado = ('Vacinado(a)')
+            else:
+                vacinado = ('Não vacinado(a)')
+                
+            print(f'- | {animal['nome']} | {animal['raca']} | {vacinado} |')
         print('')
         voltar_main()
 
     elif num == 3:
+        print('Vacinar Animal:')
+
+    elif num == 4:
         system('cls')
         finalizar_programa()
-        
+
     else:
         input('Número inválido.\nDigite qualquer coisa para voltar ao menu principal: ')
         main()
