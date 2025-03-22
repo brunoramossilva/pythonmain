@@ -57,10 +57,20 @@ def condicao (num):
     if num == 1:
         system('cls')
         print('Cadastrar Novo Animal:', end=('\n\n'))
-        animal = input('Digite o nome do animal: ')
-        animais.append(animal)
+        nome_animal = input('Digite o nome do animal: ')
+        raca_animal = input('Digite a raça do animal: ')
+        vacina_animal = input('O animal está vacinado? (Y/N): ')
+
+        if vacina_animal.lower() == 'y':
+            vacinado = True
+        else:
+            vacinado = False
+
+        dados_animal = {'nome':nome_animal, 'raca':raca_animal, 'vacinado':vacinado}
+        animais.append(dados_animal)
+        
         system('cls')
-        print(f'{animal} adicionado(a) com sucesso na lista!')
+        print(f'{nome_animal} adicionado(a) com sucesso na lista!')
 
         resposta = input ('Deseja cadastrar outro animal? (Y/N): ')
 
@@ -80,7 +90,7 @@ def condicao (num):
                 vacinado = ('Vacinado(a)')
             else:
                 vacinado = ('Não vacinado(a)')
-                
+
             print(f'- | {animal['nome']} | {animal['raca']} | {vacinado} |')
         print('')
         voltar_main()
