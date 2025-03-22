@@ -1,5 +1,7 @@
 from os import system
 
+# PetCIn
+
 animais = []
 
 def voltar_main():
