@@ -8,6 +8,10 @@ animais = [{'nome':'Toby', 'raca':'Vira-lata', 'vacinado':False},
 
 
 def voltar_main():
+    '''
+    
+    
+    '''
     input('Digite qualquer coisa para voltar ao menu principal: ')
     system('cls')
     print('Voltando ao menu principal, aguarde...')
