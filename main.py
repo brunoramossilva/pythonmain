@@ -6,7 +6,6 @@ animais = [{'nome':'Toby', 'raca':'Vira-lata', 'vacinado':False},
            {'nome':'Mel', 'raca':'Gato(a)', 'vacinado':True},
            {'nome':'Saddam', 'raca':'Vira-lata', 'vacinado':False}]
 
-
 def voltar_main():
     '''
     Essa função é responsável por retornar para o menu principal da aplicação.
@@ -23,7 +22,6 @@ def voltar_main():
     time.sleep(1.5)
     main()
 
-
 def exibir_subtitulo(mensagem):
     '''
     Essa função é responsável por exibir os subtítulos das telas.
@@ -34,7 +32,6 @@ def exibir_subtitulo(mensagem):
     print(mensagem)
     print('-#' * (tamanho // 2))
     print()
-
 
 def finalizar_programa():
     '''
@@ -54,7 +51,6 @@ def finalizar_programa():
         print('Opção inválida')
         finalizar_programa()
 
-
 def print_inicial():
     '''
     Função responsável por exibir o título do programa.
@@ -68,7 +64,6 @@ def print_inicial():
            """)
     
     print ('-#' * 11, end='\n\n')
-
 
 def escolha():
     '''
@@ -94,7 +89,6 @@ def escolha():
         system('cls')
         print('Opção Inválida!')
         escolha()
-
 
 def cadastrar_animal():
     '''
@@ -135,7 +129,6 @@ def cadastrar_animal():
         system ('cls')
         main()
 
-
 def listagem_animais():
     '''
     Inputs:
@@ -153,7 +146,6 @@ def listagem_animais():
         print(f'  {animal['nome'].ljust(18)} | {animal['raca'].ljust(18)} | {vacinado};')
     print('')
     voltar_main()
-
 
 def status_animal():
     '''
@@ -182,7 +174,6 @@ def status_animal():
         print('Infelizmente não foi possível localizar o animal que você digitou.\n\nTente novamente:')
         voltar_main()
 
-
 def condicao (num):
     '''
     Essa função é responsável por estabelecer o que o programa irá executar a partir da entrada do usuário.
@@ -205,7 +196,6 @@ def condicao (num):
     else:
         input('Número inválido.\nDigite qualquer coisa para voltar ao menu principal: ')
         main()
-
 
 def main():
     system ('cls')
