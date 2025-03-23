@@ -124,7 +124,7 @@ def cadastrar_animal():
 
     if resposta.lower() == 'y':
         system ('cls')
-        condicao(num)
+        cadastrar_animal()
     else:
         system ('cls')
         main()
