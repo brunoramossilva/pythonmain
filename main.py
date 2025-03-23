@@ -9,8 +9,13 @@ animais = [{'nome':'Toby', 'raca':'Vira-lata', 'vacinado':False},
 
 def voltar_main():
     '''
+    Essa função é responsável por retornar para o menu principal da aplicação.
     
-    
+    Inputs:
+    - Qualquer entrada.
+
+    Outputs:
+    - Retorna para o menu principal.
     '''
     input('Digite qualquer coisa para voltar ao menu principal: ')
     system('cls')
@@ -20,6 +25,9 @@ def voltar_main():
 
 
 def exibir_subtitulo(mensagem):
+    '''
+    Essa função é responsável por exibir os subtítulos das telas.
+    '''
     system ('cls')
     tamanho = len(mensagem)
     print('-#' * (tamanho // 2))
@@ -29,6 +37,14 @@ def exibir_subtitulo(mensagem):
 
 
 def finalizar_programa():
+    '''
+    Essa função é responsável por finalizar o programa.
+
+    Inputs:
+
+    - Qualquer tecla.
+    '''
+    system('cls')
     resposta = (input('Deseja finalizar o programa? (Y/N): '))
     if resposta.lower() == 'y':
         quit()
@@ -40,6 +56,9 @@ def finalizar_programa():
 
 
 def print_inicial():
+    '''
+    Função responsável por exibir o título do programa.
+    '''
     system ('cls')
     print ('-#' * 11)
 
@@ -52,6 +71,17 @@ def print_inicial():
 
 
 def escolha():
+    '''
+    Função responsável por armazenar a escolha do usuário.
+
+    Inputs:
+
+    - Número escolhido pelo usuário.
+
+    Outputs:
+
+    - Retorna o número escolhido.
+    '''
     try:
         num = int(input('1. Cadastrar novo animal;\n'
         '2. Ver lista de animais cadastrados;\n'
@@ -66,7 +96,75 @@ def escolha():
         escolha()
 
 
+def cadastrar_animal():
+    '''
+    Essa função é responsável por cadastrar um novo animal na lista.
+
+    Inputs:
+
+    - Nome do animal;
+    - Raça do animal;
+    - Status de vacinação do animal;
+    - Se o usuário deseja cadastrar um outro animal.
+
+    Outputs:
+
+    - Insere o animal descrito na lista de animais cadastrados.
+    '''
+    nome_animal = input('Digite o nome do animal: ')
+    raca_animal = input(f'{nome_animal} é da raça: ')
+    vacina_animal = input(f'{nome_animal} está vacinado(a)? (Y/N): ')
+
+    if vacina_animal.lower() == 'y':
+        vacinado = True
+    else:
+        vacinado = False
+
+    dados_animal = {'nome':nome_animal, 'raca':raca_animal, 'vacinado':vacinado}
+    animais.append(dados_animal)
+    
+    system('cls')
+    print(f'{nome_animal} adicionado(a) com sucesso na lista!')
+
+    resposta = input ('Deseja cadastrar outro animal? (Y/N): ')
+
+    if resposta.lower() == 'y':
+        system ('cls')
+        condicao(num)
+    else:
+        system ('cls')
+        main()
+
+
+def listagem_animais():
+    '''
+    Inputs:
+
+    - N/A.
+
+    Outputs:
+
+    - Exibe a lista de animais cadastrados.
+    '''
+    print(f'{'  Nome do Animal'.ljust(20)} | {'Raça do animal'.ljust(18)} | {'Status de vacinação'}')
+    print(f'{'                     |'}                    |')
+    for animal in animais:
+        vacinado = 'Vacinado(a)' if animal['vacinado'] else 'Não vacinado(a)'
+        print(f'  {animal['nome'].ljust(18)} | {animal['raca'].ljust(18)} | {vacinado};')
+    print('')
+    voltar_main()
+
+
 def status_animal():
+    '''
+     Inputs:
+
+    - Nome do animal que o usuário deseja alterar o status de vacinação.
+
+    Outputs:
+
+    - Altera o status de vacinação do animal escolhido.
+    '''
     nome_animal = input('Digite o nome do animal que você deseja alterar o status de vacinação: ')
     animal_encontrado = False
     for animal in animais:
@@ -86,50 +184,22 @@ def status_animal():
 
 
 def condicao (num):
-
+    '''
+    Essa função é responsável por estabelecer o que o programa irá executar a partir da entrada do usuário.
+    '''
     if num == 1:
         exibir_subtitulo('Cadastrando um Novo Animal')
-        nome_animal = input('Digite o nome do animal: ')
-        raca_animal = input(f'{nome_animal} é da raça: ')
-        vacina_animal = input(f'{nome_animal} está vacinado(a)? (Y/N): ')
-
-        if vacina_animal.lower() == 'y':
-            vacinado = True
-        else:
-            vacinado = False
-
-        dados_animal = {'nome':nome_animal, 'raca':raca_animal, 'vacinado':vacinado}
-        animais.append(dados_animal)
+        cadastrar_animal()
         
-        system('cls')
-        print(f'{nome_animal} adicionado(a) com sucesso na lista!')
-
-        resposta = input ('Deseja cadastrar outro animal? (Y/N): ')
-
-        if resposta.lower() == 'y':
-            system ('cls')
-            condicao(num)
-        else:
-            system ('cls')
-            main()
-
     elif num == 2:
         exibir_subtitulo('Listagem de Animais')
-        print(f'{'  Nome do Animal'.ljust(20)} | {'Raça do animal'.ljust(18)} | {'Status de vacinação'}')
-        print(f'{'                     |'}                    |')
-        for animal in animais:
-            vacinado = 'Vacinado(a)' if animal['vacinado'] else 'Não vacinado(a)'
-            print(f'  {animal['nome'].ljust(18)} | {animal['raca'].ljust(18)} | {vacinado};')
-        print('')
-        voltar_main()
+        listagem_animais()
 
     elif num == 3:
-        system('cls')
         exibir_subtitulo('Alterando Status de Vacinação do Animal')
         status_animal()
 
     elif num == 4:
-        system('cls')
         finalizar_programa()
 
     else:
